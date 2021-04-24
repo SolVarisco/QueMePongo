@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam backgroundColor transparent
+skinparam arrowFontColor royalblue
+
+class Prenda {
+    colorPrincipal
+    colorSecundario
+    categoria()
+}
+enum Material {
+    GABARDINA, NYLON, ALGODON, ...
+}
+class Tipo {
+    getCategoria()
+}
+enum Categoria {
+    SUPERIOR, CALZADO, INFERIOR, ACCESORIO
+}
+
+Prenda --> "1" Material
+Prenda ..> Categoria
+Prenda --> "1" Tipo
+Tipo --> "1" Categoria
+
+@enduml
