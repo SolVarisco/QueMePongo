@@ -7,7 +7,7 @@ public class Borrador {
   Material material;
   Color colorPrincipal;
   Color colorSecundario;
-  Trama trama;
+  Trama trama = Trama.LISA;
 
   Borrador(Tipo tipo){
     this.tipo = requireNonNull(tipo, "Debe ingresar un tipo");
@@ -29,7 +29,7 @@ public class Borrador {
     this.trama = trama;
   }
 
-  public void guardarPrenda(){
-    new Prenda(tipo, material, colorPrincipal, colorSecundario, trama);
+  public Prenda guardarPrenda(){
+    return new Prenda(tipo, material, colorPrincipal, colorSecundario, trama);
   }
 }

@@ -2,5 +2,10 @@ public enum Material {
   GABARDINA,
   NYLON,
   ALGODON,
-  JEAN
+  JEAN,
+  CUERINA,
+  PIQUE,
+  ACETATO,
+  DEVESTIR,
+  CUERO
 }
