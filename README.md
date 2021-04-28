@@ -1,5 +1,14 @@
 # Que Me Pongo
 
 ## Diagrama de Clases
-![](http://www.plantuml.com/plantuml/png/PO_1QiCm38RlUWhHqmPfO2ymwYLj2MH9IBR3TbDJ4qmTEoWsOuo--nngih7vOCJdJzBltUo8dHyrp1Tb9c8QyKJzPM3hpJcpsZ8w9ZE79sdSBukOxSV16dUJs7wIFcal0NfDyunDyC-4Nu3Xz8lJi3AzcaZ_e4xsFbYix8sHauDbHNVtS0Lf_8ZF0GMWuw2ZU19jNbGYmUgjhAi4HNciywL8qnIkSVcBccpi6AJB_ezTKRIwrsRV5dMRO2RATv7N2HRL8IAHPVkk3dNeXlYlxVOHDm-RDTzVlYI0vLh9kX9smVIZ_WO0)
+
+Primera Iteración:
+
+![alt text](https://github.com/SolVarisco/QueMePongo/blob/main/assets/QMP-Primera%20Iteracion.png?raw=true)
+
+
+
+Segunda Iteración:
+
+![alt text](https://github.com/SolVarisco/QueMePongo/blob/main/assets/QMP-Segunda%20Iteracion.png?raw=true)
 
