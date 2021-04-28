@@ -6,6 +6,8 @@ Primera Iteración:
 
 ![alt text](https://github.com/SolVarisco/QueMePongo/blob/main/assets/QMP-Primera%20Iteracion.png?raw=true)
 
+
+
 Segunda Iteración:
 
 ![alt text](https://github.com/SolVarisco/QueMePongo/blob/main/assets/QMP-Segunda%20Iteracion.png?raw=true)
