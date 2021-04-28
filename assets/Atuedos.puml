@@ -2,6 +2,7 @@
 'https://plantuml.com/class-diagram
 skinparam backgroundColor transparent
 skinparam arrowFontColor royalblue
+skinparam nodesep 120
 
 class Prenda {
     colorPrincipal
@@ -11,16 +12,40 @@ class Prenda {
 enum Material {
     GABARDINA, NYLON, ALGODON, ...
 }
+enum Trama {
+    LISA, RAYADA, ESTAMPADA, ...
+}
+
 class Tipo {
     getCategoria()
 }
+
+class Borrador {
+    colorPrincipal
+    colorSecundario
+    guardarPrenda()
+}
+
+class Uniforme {
+    parteSuperior
+    parteInferior
+    calzado
+}
+
 enum Categoria {
     SUPERIOR, CALZADO, INFERIOR, ACCESORIO
 }
 
 Prenda --> "1" Material
-Prenda ..> Categoria
 Prenda --> "1" Tipo
+Prenda --> "1" Trama
 Tipo --> "1" Categoria
+Borrador --> "1" Material
+Borrador --> "1" Tipo
+Borrador --> "1" Trama
+Borrador -left..> Prenda
+Uniforme -right--> "parte superior" Prenda
+Uniforme --> "parte inferior" Prenda
+Uniforme --> "calzado" Prenda
 
 @enduml
