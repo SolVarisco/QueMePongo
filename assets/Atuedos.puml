@@ -8,6 +8,8 @@ class Prenda {
     colorPrincipal
     colorSecundario
     categoria()
+    temperaturaLimite
+    aptaClima(temperatura)
 }
 enum Material {
     GABARDINA, NYLON, ALGODON, ...
@@ -32,6 +34,24 @@ class Uniforme {
     calzado
 }
 
+class Sugerencia {
+    accesorio
+}
+
+class Guardarropas {
+    prendasSuperiores
+    prendasInferiores
+    calzados
+    accesorios
+    generarSugerencias()
+    getPrendasValidas(clima, prendas)
+}
+
+class Pronostico {
+    respuestas
+    consultarClima()
+}
+
 enum Categoria {
     SUPERIOR, CALZADO, INFERIOR, ACCESORIO
 }
@@ -47,5 +67,9 @@ Borrador -left..> Prenda
 Uniforme -right--> "parte superior" Prenda
 Uniforme --> "parte inferior" Prenda
 Uniforme --> "calzado" Prenda
+Sugerencia --> Uniforme
+Guardarropas --> "*" Prenda
+Guardarropas .right.> Pronostico
+Guardarropas ..> Sugerencia
 
 @enduml
