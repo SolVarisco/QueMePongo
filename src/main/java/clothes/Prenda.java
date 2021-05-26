@@ -1,3 +1,5 @@
+package clothes;
+
 import java.awt.*;
 
 import static java.util.Objects.isNull;
@@ -24,6 +26,9 @@ public class Prenda {
     }
   }
 
+  public Tipo getTipo() {
+    return tipo;
+  }
 
   public Categoria getCategoria(){
     return tipo.getCategoria();

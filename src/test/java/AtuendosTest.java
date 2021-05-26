@@ -1,7 +1,9 @@
+import clothes.*;
+import convinations.Borrador;
+import convinations.Uniforme;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
-import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 

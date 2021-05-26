@@ -1,3 +1,7 @@
+package convinations;
+
+import clothes.Prenda;
+
 import static java.util.Objects.requireNonNull;
 
 public class Sugerencia {

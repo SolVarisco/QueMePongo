@@ -1,9 +1,14 @@
+package convinations;
+
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import clothes.Prenda;
 import com.google.common.collect.Sets;
+import services.Pronostico;
 
 public class Guaradarropas {
   Set<Prenda> prendasSuperiores;
@@ -35,7 +40,7 @@ public class Guaradarropas {
   }
 
   public List<Sugerencia> generarSugerencias(String ciudad){
-    HashMap<String, Object> clima = (HashMap<String, Object>) Pronostico.instance().consultarClima(ciudad).get(0).get("Temperature");
+    HashMap<String, Object> clima = (HashMap<String, Object>) Pronostico.instance().consultarClima(ciudad, LocalDateTime.now().plusHours(4)).get(0).get("Temperature");
     int temperatura = (int) clima.get("Value");
     Set<Prenda> prendasSuperioresValidas = getPrendasValidas(temperatura, prendasSuperiores);
     Set<Prenda> prendasInferioresValidas = getPrendasValidas(temperatura, prendasInferiores);

@@ -1,3 +1,5 @@
+package clothes;
+
 public enum Material {
   GABARDINA,
   NYLON,

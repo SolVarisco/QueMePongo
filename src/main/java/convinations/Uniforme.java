@@ -1,3 +1,9 @@
+package convinations;
+
+import clothes.Categoria;
+import clothes.Prenda;
+import exceptions.PrendaIncorrectaExeption;
+
 import static java.util.Objects.requireNonNull;
 
 public class Uniforme {
@@ -12,22 +18,22 @@ public class Uniforme {
   }
 
   public void setParteSuperior(Prenda parteSuperior) {
-    if(parteSuperior.tipo.getCategoria() != Categoria.SUPERIOR){
-      throw new PrendaIncorrectaExeption(parteSuperior.tipo.getCategoria().toString(), "SUPERIOR");
+    if(parteSuperior.getTipo().getCategoria() != Categoria.SUPERIOR){
+      throw new PrendaIncorrectaExeption(parteSuperior.getTipo().getCategoria().toString(), "SUPERIOR");
     }
     this.parteSuperior = parteSuperior;
   }
 
   public void setParteInferior(Prenda parteInferior) {
-    if(parteSuperior.tipo.getCategoria() != Categoria.INFERIOR){
-      throw new PrendaIncorrectaExeption(parteSuperior.tipo.getCategoria().toString(), "INFERIOR");
+    if(parteSuperior.getTipo().getCategoria() != Categoria.INFERIOR){
+      throw new PrendaIncorrectaExeption(parteSuperior.getTipo().getCategoria().toString(), "INFERIOR");
     }
     this.parteInferior = parteInferior;
   }
 
   public void setCalzado(Prenda calzado) {
-    if(parteSuperior.tipo.getCategoria() != Categoria.CALZADO){
-      throw new PrendaIncorrectaExeption(parteSuperior.tipo.getCategoria().toString(), "CALZADO");
+    if(parteSuperior.getTipo().getCategoria() != Categoria.CALZADO){
+      throw new PrendaIncorrectaExeption(parteSuperior.getTipo().getCategoria().toString(), "CALZADO");
     }
     this.calzado = calzado;
   }

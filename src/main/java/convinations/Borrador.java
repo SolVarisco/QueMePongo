@@ -1,3 +1,10 @@
+package convinations;
+
+import clothes.Material;
+import clothes.Prenda;
+import clothes.Tipo;
+import clothes.Trama;
+
 import java.awt.*;
 
 import static java.util.Objects.requireNonNull;
@@ -8,6 +15,7 @@ public class Borrador {
   Color colorPrincipal;
   Color colorSecundario;
   Trama trama = Trama.LISA;
+  int temperaturaLimite;
 
   Borrador(Tipo tipo){
     this.tipo = requireNonNull(tipo, "Debe ingresar un tipo");
@@ -29,7 +37,11 @@ public class Borrador {
     this.trama = trama;
   }
 
+  public void setTemperaturaLimite(int temperaturaLimite) {
+    this.temperaturaLimite = temperaturaLimite;
+  }
+
   public Prenda guardarPrenda(){
-    return new Prenda(tipo, material, colorPrincipal, colorSecundario, trama);
+    return new Prenda(tipo, material, colorPrincipal, colorSecundario, trama, temperaturaLimite);
   }
 }

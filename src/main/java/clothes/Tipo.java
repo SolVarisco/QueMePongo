@@ -1,3 +1,5 @@
+package clothes;
+
 public class Tipo {
   Categoria categoria;
 

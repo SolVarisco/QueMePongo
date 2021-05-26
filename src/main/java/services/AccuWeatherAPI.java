@@ -1,3 +1,5 @@
+package services;
+
 import java.util.*;
 
 public class AccuWeatherAPI {

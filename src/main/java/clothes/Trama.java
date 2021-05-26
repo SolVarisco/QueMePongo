@@ -1,3 +1,5 @@
+package clothes;
+
 public enum Trama {
   LISA,
   RAYADA,
