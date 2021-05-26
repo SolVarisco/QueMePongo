@@ -38,22 +38,49 @@ class Sugerencia {
     accesorio
 }
 
-class Guardarropas {
-    prendasSuperiores
-    prendasInferiores
-    calzados
-    accesorios
-    generarSugerencias()
-    getPrendasValidas(clima, prendas)
+class Respuesta {
+    clima
+    vencimiento
 }
 
-class Pronostico {
-    respuestas
+class Guardarropas {
+    generarSugerencias()
+    getPrendasValidas(clima, prendas)
+    aceptarPropuesta()
+    declinarPropuesta()
+}
+
+interface Pronostico {
     consultarClima()
+}
+
+class PronosticoAccuWeather {
+
+}
+
+class EstadoDelTiempo {
+    parametroDuracion
+    getClima()
 }
 
 enum Categoria {
     SUPERIOR, CALZADO, INFERIOR, ACCESORIO
+}
+
+interface Notificacion{
+    aceptar()
+}
+
+class Agregar{
+}
+
+class Eliminar{
+}
+
+class User{
+    verNotificacionesDe(guardarropa)
+    aceptarPropuestaNotificacion(guardarropa, index)
+    declinarPropuestaNotificacion(guardarropa, index)
 }
 
 Prenda --> "1" Material
@@ -69,7 +96,14 @@ Uniforme --> "parte inferior" Prenda
 Uniforme --> "calzado" Prenda
 Sugerencia --> Uniforme
 Guardarropas --> "*" Prenda
-Guardarropas .right.> Pronostico
+Guardarropas -right-> EstadoDelTiempo
 Guardarropas ..> Sugerencia
+Pronostico<|..PronosticoAccuWeather
+PronosticoAccuWeather --> "*"Respuesta
+EstadoDelTiempo-->Pronostico
+Agregar--|>Notificacion
+Eliminar--|>Notificacion
+Guardarropas-left->"*"Notificacion
+User --> "*"Guardarropas
 
 @enduml

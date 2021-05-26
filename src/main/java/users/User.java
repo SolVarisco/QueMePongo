@@ -1,17 +1,31 @@
 package users;
 
-import convinations.Guaradarropas;
+import convinations.Guardarropa;
+import notifications.Notificacion;
 
-import java.util.Set;
+import java.util.Collection;
+import java.util.List;
 
 public class User {
-  private Set<Guaradarropas> conjuntoGuardarropas;
+  private Collection<Guardarropa> guardarropas;
 
-  public User(Set<Guaradarropas> conjuntoGuardarropas) {
-    this.conjuntoGuardarropas = conjuntoGuardarropas;
+  public User(Collection<Guardarropa> guardarropas) {
+    this.guardarropas = guardarropas;
   }
 
-  public void addGuardarropa(Guaradarropas guardarropa){
-    conjuntoGuardarropas.add(guardarropa);
+  public void addGuardarropa(Guardarropa guardarropa){
+    guardarropas.add(guardarropa);
+  }
+
+  public List<Notificacion> verNotificacionesDe(Guardarropa guardarropa){
+    return guardarropa.getNotificaciones();
+  }
+
+  public void aceptarPropuestaNotificacion(Guardarropa guardarropa, int index){
+    guardarropa.aceptarPropuesta(index);
+  }
+
+  public void declinarPropuestaNotificacion(Guardarropa guardarropa, int index){
+    guardarropa.declinarPropuesta(index);
   }
 }
