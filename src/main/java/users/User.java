@@ -17,7 +17,7 @@ public class User {
     guardarropas.add(guardarropa);
   }
 
-  public List<Notificacion> verNotificacionesDe(Guardarropa guardarropa){
+/*  public List<Notificacion> verNotificacionesDe(Guardarropa guardarropa){
     return guardarropa.getNotificaciones();
   }
 
@@ -27,5 +27,5 @@ public class User {
 
   public void declinarPropuestaNotificacion(Guardarropa guardarropa, int index){
     guardarropa.declinarPropuesta(index);
-  }
+  } */
 }
