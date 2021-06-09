@@ -6,4 +6,5 @@ import java.util.Map;
 
 public interface Pronostico {
   List<Map<String, Object>> consultarClima(String ciudad, LocalDateTime nuevoVencimiento);
+  List<String> obternerAlerta(String ciudad);
 }

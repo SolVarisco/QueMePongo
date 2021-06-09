@@ -14,18 +14,12 @@ import services.EstadoDelTiempo;
 
 public class Guardarropa {
   EstadoDelTiempo estadoDelTiempo;
-  Set<Prenda> prendasSuperiores;
-  Set<Prenda> prendasInferiores;
-  Set<Prenda> calzados;
-  Set<Prenda> accesorios;
+  Set<Prenda> prendas;
   List<Notificacion> notificaciones = new ArrayList<>();
 
-  public Guardarropa(EstadoDelTiempo estadoDelTiempo, Set<Prenda> prendasSuperiores, Set<Prenda> prendasInferiores, Set<Prenda> calzados, Set<Prenda> accesorios) {
+  public Guardarropa(EstadoDelTiempo estadoDelTiempo, Set<Prenda> prendas) {
     this.estadoDelTiempo = estadoDelTiempo;
-    this.prendasSuperiores = prendasSuperiores;
-    this.prendasInferiores = prendasInferiores;
-    this.calzados = calzados;
-    this.accesorios = accesorios;
+    this.prendas = prendas;
   }
 
   public List<Notificacion> getNotificaciones() {
@@ -33,45 +27,33 @@ public class Guardarropa {
   }
 
   public void addPrenda(Prenda prenda){
-    Categoria categoria = prenda.getTipo().getCategoria();
-    if(categoria.equals(Categoria.SUPERIOR)){
-      prendasSuperiores.add(prenda);
-    } else if (categoria.equals(Categoria.INFERIOR)){
-      prendasInferiores.add(prenda);
-    } else if (categoria.equals((Categoria.CALZADO))){
-      calzados.add(prenda);
-    } else {
-      accesorios.add(prenda);
-    }
+    prendas.add(prenda);
   }
 
   public List<Sugerencia> generarSugerencias(String ciudad){
     int temperatura = estadoDelTiempo.getClima(ciudad).getTemperatura();
-    Set<Prenda> prendasSuperioresValidas = getPrendasValidas(temperatura, prendasSuperiores);
-    Set<Prenda> prendasInferioresValidas = getPrendasValidas(temperatura, prendasInferiores);
-    Set<Prenda> calzadosValidos = getPrendasValidas(temperatura, calzados);
-    Set<Prenda> accesoriosValidos = getPrendasValidas(temperatura, accesorios);
-    return Sets.cartesianProduct(prendasSuperioresValidas, prendasInferioresValidas, calzadosValidos, accesoriosValidos)
+    Set<Prenda> prendasInferiores = prendasValidasTipo(Categoria.INFERIOR, temperatura);
+    Set<Prenda> prendasSuperiores = prendasValidasTipo(Categoria.SUPERIOR, temperatura);
+    Set<Prenda> calzados = prendasValidasTipo(Categoria.CALZADO, temperatura);
+    Set<Prenda> accesorios = prendasValidasTipo(Categoria.ACCESORIO, temperatura);
+    return Sets.cartesianProduct(prendasSuperiores, prendasInferiores, calzados, accesorios)
         .stream()
         .map((list) -> new Sugerencia(new Uniforme(list.get(0), list.get(1), list.get(2)), list.get(3)))
         .collect(Collectors.toList());
   }
 
-  private Set<Prenda> getPrendasValidas(int temperatura, Set<Prenda> prendas) {
-    return prendas.stream().filter(p -> p.aptaClima(temperatura)).collect(Collectors.toSet());
+  public Sugerencia sugerenciaPrincipal(String ciudad) {
+    return generarSugerencias(ciudad).get(0);
+  }
+
+  private Set<Prenda> prendasValidasTipo(Categoria categoria, int temperatura) {
+    return prendas.stream()
+        .filter(p -> p.getCategoria() == categoria && p.aptaClima(temperatura))
+        .collect(Collectors.toSet());
   }
 
   public void deletePrenda(Prenda prenda) {
-    Categoria categoria = prenda.getTipo().getCategoria();
-    if(categoria.equals(Categoria.SUPERIOR)){
-      prendasSuperiores.remove(prenda);
-    } else if (categoria.equals(Categoria.INFERIOR)){
-      prendasInferiores.remove(prenda);
-    } else if (categoria.equals((Categoria.CALZADO))){
-      calzados.remove(prenda);
-    } else {
-      accesorios.remove(prenda);
-    }
+    prendas.remove(prenda);
   }
 
   public void agregarNotificacion(Notificacion notificacion){

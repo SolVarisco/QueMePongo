@@ -7,6 +7,7 @@ import java.util.Map;
 public class PronosticoAccuWeather implements Pronostico{
   private Map<String, Respuesta> respuestas;
 
+  @Override
   public List<Map<String, Object>> consultarClima(String ciudad, LocalDateTime nuevoVencimiento){
     if(respuestas.containsKey(ciudad)){
       Respuesta respuesta = respuestas.get(ciudad);
@@ -21,5 +22,10 @@ public class PronosticoAccuWeather implements Pronostico{
     nuevoClima.setClima(new AccuWeatherAPI().getWeather(ciudad));
     respuestas.put(ciudad, nuevoClima);
     return nuevoClima.getClima();
+  }
+
+  @Override
+  public List<String> obternerAlerta(String ciudad) {
+    return (List<String>) new AccuWeatherAPI().getAlerts(ciudad).get("CurrentAlerts");
   }
 }
