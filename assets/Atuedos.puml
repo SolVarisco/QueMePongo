@@ -52,6 +52,7 @@ class Guardarropas {
 
 interface Pronostico {
     consultarClima()
+    obtenerAlertas()
 }
 
 class PronosticoAccuWeather {
@@ -61,6 +62,15 @@ class PronosticoAccuWeather {
 class EstadoDelTiempo {
     parametroDuracion
     getClima()
+}
+
+class ReporteAlertas {
+    alertas
+    actualizarAlertas()
+}
+
+enum AlertaMeteorologica {
+    GRANIZO, LLUVIA
 }
 
 enum Categoria {
@@ -78,9 +88,31 @@ class Eliminar{
 }
 
 class User{
-    verNotificacionesDe(guardarropa)
-    aceptarPropuestaNotificacion(guardarropa, index)
-    declinarPropuestaNotificacion(guardarropa, index)
+    generarSugerenciaDiaria()
+    gestionarAlertaMeteorologica()
+}
+
+class Users{
+    INSTANCE
+    generarSugerenciasDiarias()
+    gestionarAlertasClimaticas()
+}
+
+interface Actions{
+    ejecutar()
+}
+
+class ActualizarVestuario{
+}
+
+class EnviarMail{
+    MailSendar
+}
+
+class NotificadorAlertas{
+}
+
+class NotificacionAlerta{
 }
 
 Prenda --> "1" Material
@@ -98,12 +130,24 @@ Sugerencia --> Uniforme
 Guardarropas --> "*" Prenda
 Guardarropas -right-> EstadoDelTiempo
 Guardarropas ..> Sugerencia
-Pronostico<|..PronosticoAccuWeather
+Pronostico<|.left.PronosticoAccuWeather
 PronosticoAccuWeather --> "*"Respuesta
 EstadoDelTiempo-->Pronostico
 Agregar--|>Notificacion
 Eliminar--|>Notificacion
 Guardarropas-left->"*"Notificacion
 User --> "*"Guardarropas
+User --> Sugerencia
+Users --> "*" User
+User --> "*" Actions
+NotificadorAlertas --|> Actions
+NotificadorAlertas..>NotificacionAlerta
+Users --> "*" NotificacionAlerta
+ActualizarVestuario --|> Actions
+EnviarMail--|>Actions
+ReporteAlertas-up->"*"AlertaMeteorologica
+ReporteAlertas-->Pronostico
+ReporteAlertas..>Users
+NotificacionAlerta-->AlertaMeteorologica
 
 @enduml

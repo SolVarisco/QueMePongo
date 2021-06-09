@@ -16,4 +16,8 @@ public class NotificacionAlerta {
   public void setAlerta(AlertaMetoerologica alerta) {
     this.alerta = alerta;
   }
+
+  public void getMensaje() {
+    alerta.mensaje();
+  }
 }

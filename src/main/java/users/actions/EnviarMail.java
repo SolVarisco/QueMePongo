@@ -4,9 +4,15 @@ import services.AlertaMetoerologica;
 import users.User;
 
 public class EnviarMail implements Action{
+  private MailSender mailSender;
+
+  public EnviarMail(MailSender mailSender) {
+    this.mailSender = mailSender;
+  }
+
   @Override
   public void ejecutar(User user, AlertaMetoerologica alerta) {
-    new MailSender().send(user.getMail(), armarMail(alerta));
+    mailSender.send(user.getMail(), armarMail(alerta));
   }
 
   private String armarMail(AlertaMetoerologica alerta) {
